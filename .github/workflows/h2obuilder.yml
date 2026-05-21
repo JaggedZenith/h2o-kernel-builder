@@ -1,4 +1,4 @@
-name: H2O Kernel Builder - main
+name: H2O Kernel Builder - neon
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Checkout Kernel
         run: |
-          git clone --depth=1 -b main https://github.com/jammbazz/hawaiikernel-a01core kernel_src
+          git clone --depth=1 -b neon https://github.com/jammbazz/hawaiikernel-a01core kernel_src
 
       - name: Setup Toolchain
         run: |
