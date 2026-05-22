@@ -56,9 +56,9 @@ jobs:
           mkdir -p out
           make O=out a01core_defconfig
 
-          echo "CONFIG_ASSISTANT_KSU=y" >> out/.config
-          echo "CONFIG_KSU=y" >> out/.config
-          echo "CONFIG_KSU_MANUAL_HOOK=y" >> out/.config
+          echo "CONFIG_ASSISTANT_KSU=y" >> arch/arm/configs/a01core_defconfig
+          echo "CONFIG_KSU=y" >> arch/arm/configs/a01core_defconfig
+          echo "CONFIG_KSU_MANUAL_HOOK=y" >> arch/arm/configs/a01core_defconfig
           
           make O=out -j$(nproc --all) CROSS_COMPILE=$CROSS_COMPILE KCFLAGS="$KCFLAGS" CONFIG_SECTION_MISMATCH_WARN_ONLY=y
 
