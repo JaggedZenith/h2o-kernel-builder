@@ -29,14 +29,16 @@ jobs:
           fi
           chmod +x ./arm-linux-androideabi-4.9/bin/* || true
 
-      - name: Setup KernelSU
+      - name: Setup KernelSU Next
         if: matrix.ksu_variant == 'ksu'
         run: |
           cd kernel_src
-          curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s v3.0.0-30-legacy
+          curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU-Next/next/kernel/setup.sh" | bash -s next-legacy
           
-          sed -i 's|#define KERNEL_SU_ALLOWLIST "/data/adb/ksu/.allowlist"|#define KERNEL_SU_ALLOWLIST "/data/.allowlist"|g' "$(pwd)/KernelSU/kernel/allowlist.c"
-          sed -i 's|O_TRUNC, 0644|O_TRUNC, 0664|g' "$(pwd)/KernelSU/kernel/allowlist.c"
+          if [ -f "$(pwd)/KernelSU-Next/kernel/allowlist.c" ]; then
+            sed -i 's|#define KERNEL_SU_ALLOWLIST "/data/adb/ksu/.allowlist"|#define KERNEL_SU_ALLOWLIST "/data/.allowlist"|g' "$(pwd)/KernelSU-Next/kernel/allowlist.c"
+            sed -i 's|O_TRUNC, 0644|O_TRUNC, 0664|g' "$(pwd)/KernelSU-Next/kernel/allowlist.c"
+          fi
           
           if [ -f "$(pwd)/drivers/kernelsu/sulog/event.c" ]; then
             sed -i '1i #define untagged_addr(x) (x)' "$(pwd)/drivers/kernelsu/sulog/event.c"
