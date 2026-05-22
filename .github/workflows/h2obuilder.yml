@@ -55,6 +55,11 @@ jobs:
           export KCFLAGS="-O3 -w -fno-stack-protector -fuse-linker-plugin -ftree-vectorize"
           mkdir -p out
           make O=out a01core_defconfig
+
+          echo "CONFIG_ASSISTANT_KSU=y" >> out/.config
+          echo "CONFIG_KSU=y" >> out/.config
+          echo "CONFIG_KSU_MANUAL_HOOK=y" >> out/.config
+          
           make O=out -j$(nproc --all) CROSS_COMPILE=$CROSS_COMPILE KCFLAGS="$KCFLAGS" CONFIG_SECTION_MISMATCH_WARN_ONLY=y
 
       - name: Repack AnyKernel3
