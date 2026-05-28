@@ -19,7 +19,7 @@ jobs:
 
       - name: Checkout Kernel
         run: |
-          git clone --depth=1 -b neon https://github.com/jammbazz/hawaiikernel-a01core kernel_src
+          git clone --depth=1 -b stable https://github.com/zenicja/android_kernel_samsung_mt6739 kernel_src
 
       - name: Setup Toolchain
         run: |
