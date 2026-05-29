@@ -19,7 +19,7 @@ jobs:
 
       - name: Checkout Kernel
         run: |
-          git clone --depth=1 -b stable https://github.com/zenicja/android_kernel_samsung_mt6739 kernel_src
+          git clone --depth=1 -b neon https://github.com/JaggedZenith/hawaiikernel-a01core kernel_src
 
       - name: Setup Toolchain
         run: |
@@ -47,7 +47,7 @@ jobs:
           cd kernel_src
           sed -i 's/--output-sync/-O/g' Makefile || true
           export ARCH=arm
-          export KBUILD_BUILD_USER="jammbazz"
+          export KBUILD_BUILD_USER="JaggedZenith"
           export KBUILD_BUILD_HOST="Hawaii-Build-Server"
           export CROSS_COMPILE=$(pwd)/arm-linux-androideabi-4.9/bin/arm-linux-androidkernel-
           export KCFLAGS="-O3 -w -fno-stack-protector -fuse-linker-plugin -ftree-vectorize"
