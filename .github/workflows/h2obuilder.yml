@@ -61,7 +61,7 @@ jobs:
           git clone --depth=1 -b master https://github.com/jammbazz/AnyKernel3 AnyKernel3
           cp kernel_src/out/arch/arm/boot/Image AnyKernel3/
           cd AnyKernel3
-          zip -r9 "../Hawaii-Kernel-R1-${{ matrix.ksu_variant }}-$TIME.zip" * -x .git *.zip README.md *placeholder
+          zip -r9 "../Hawaii-Kernel-R2-${{ matrix.ksu_variant }}-$TIME.zip" * -x .git *.zip README.md *placeholder
 
       - name: Upload Kernel
         uses: actions/upload-artifact@v7.0.1
